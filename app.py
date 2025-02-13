@@ -43,24 +43,84 @@ def get_artigo_by_slug(slug):
     return make_response(jsonify({"message": "Artigo not found"}), 404)
 
 
+@app.route("/api/artigos/check_slug", methods=["POST"])
+def check_slug():
+    try:
+        data = request.get_json()
+        if not data or "slug" not in data or "id" not in data:
+            return make_response(jsonify({"message": "Slug and ID are required"}), 400)
+
+        slug = data["slug"]
+        artigoid = data["id"]
+        slug_exists = any(
+            (artigo.get("slug") == slug and artigo.get("id") != artigoid)
+            for artigo in artigos
+        )
+
+        return jsonify({"exists": slug_exists}), 200
+
+    except Exception as e:
+        return make_response(
+            jsonify({"message": "An error occurred", "error": str(e)}), 500
+        )
+
+
 @app.route("/api/artigos", methods=["POST"])
 def create_artigo():
     try:
-        new_artigo = request.get_json()
-        new_artigo["id"] = str(uuid.uuid4())  # Generate unique ID
-        new_artigo["index"] = len(artigos) + 1  # Generate index
+        if request.content_type.startswith("multipart/form-data"):
+            form_data = request.form
+            is_multipart = True
+        elif request.is_json:
+            form_data = request.get_json()
+            is_multipart = False
+        else:
+            return make_response(jsonify({"message": "Unsupported content type"}), 400)
+
+        new_artigo = {}
+
+        new_artigo["id"] = str(uuid.uuid4())
+        new_artigo["titulo"] = form_data.get("titulo")
+        new_artigo["sumario"] = form_data.get("sumario")
+        new_artigo["assunto"] = form_data.get("assunto")
+        new_artigo["slug"] = form_data.get("slug")
+        new_artigo["data"] = form_data.get("data")
+        new_artigo["index"] = len(artigos) + 1
+
+        new_artigo["autor"] = {
+            "nome": form_data.get("autor[nome]"),
+            "avatar": form_data.get("autor[avatar]"),
+        }
+
+        if is_multipart:
+            new_artigo["texto"] = [
+                form_data[key]
+                for key in sorted(form_data.keys())
+                if key.startswith("texto[")
+            ]
+        else:
+            new_artigo["texto"] = form_data.get("texto", [])
+
+        # Handle image upload (only for multipart/form-data)
+        if is_multipart and "imagem" in request.files:
+            image_file = request.files["imagem"]
+            if image_file.filename:
+                filename = secure_filename(image_file.filename)
+                image_path = os.path.join(UPLOAD_FOLDER, filename)
+                image_file.save(image_path)
+                new_artigo["imagem"] = f"/images/{filename}"
+
         artigos.append(new_artigo)
 
         with open("artigos.json", "w", encoding="utf-8") as f:
-            json.dump(artigos, f, indent=2, ensure_ascii=False)  # Save to JSON
+            json.dump(artigos, f, indent=2, ensure_ascii=False)
 
-        return jsonify(new_artigo), 201  # 201 Created
+        return jsonify(new_artigo), 201
 
-    except (TypeError, ValueError) as e:  # Handle potential errors
-        return make_response(jsonify({"message": "Invalid article data"}), 400)
-
-
-import os
+    except Exception as e:
+        return make_response(
+            jsonify({"message": "Error creating article", "error": str(e)}), 500
+        )
 
 
 @app.route("/api/artigos", methods=["PUT"])

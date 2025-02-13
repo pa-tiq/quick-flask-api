@@ -33,7 +33,7 @@
       "avatar": ""
     },
     "texto": [
-      "A educação financeira é a base para uma vida financeira saudável e próspera. Com ela, você aprende a tomar decisões inteligentes sobre seu dinheiro, como gastar, investir e economizar.\n\nPara começar a melhorar sua educação financeira, siga estas 5 dicas:\n\n1. Faça um orçamento: Anote todos os seus gastos e receitas para ter uma visão clara de onde seu dinheiro está indo. Isso te ajudará a identificar gastos desnecessários e áreas onde você pode economizar.\n\n2. Defina metas financeiras: O que você quer alcançar com seu dinheiro? Comprar uma casa? Fazer uma viagem? Pagar a faculdade dos filhos? Definir metas te dará um objetivo e te motivará a economizar e investir\n\n3. Aprenda sobre investimentos: Existem diversas opções de investimento, como renda fixa, renda variável, fundos de investimento e previdência privada. Estude cada uma delas e escolha as que se encaixam no seu perfil de risco e objetivos.\n\n4. Controle suas dívidas: Dívidas podem ser um grande obstáculo para alcançar seus objetivos financeiros. Se você está endividado, faça um plano para quitar suas dívidas o mais rápido possível.\n\n5. Busque conhecimento: Leia livros, artigos e blogs sobre finanças pessoais. Participe de cursos e workshops. Quanto mais você aprender, mais fácil será tomar decisões financeiras inteligentes."
+      "A educação financeira é a base para uma vida financeira saudável e próspera. Com ela, você aprende a tomar decisões inteligentes sobre seu dinheiro, como gastar, investir e economizar.\r\n\r\nPara começar a melhorar sua educação financeira, siga estas 5 dicas:\r\n\r\n1. Faça um orçamento: Anote todos os seus gastos e receitas para ter uma visão clara de onde seu dinheiro está indo. Isso te ajudará a identificar gastos desnecessários e áreas onde você pode economizar.\r\n\r\n2. Defina metas financeiras: O que você quer alcançar com seu dinheiro? Comprar uma casa? Fazer uma viagem? Pagar a faculdade dos filhos? Definir metas te dará um objetivo e te motivará a economizar e investir\r\n\r\n3. Aprenda sobre investimentos: Existem diversas opções de investimento, como renda fixa, renda variável, fundos de investimento e previdência privada. Estude cada uma delas e escolha as que se encaixam no seu perfil de risco e objetivos.\r\n\r\n4. Controle suas dívidas: Dívidas podem ser um grande obstáculo para alcançar seus objetivos financeiros. Se você está endividado, faça um plano para quitar suas dívidas o mais rápido possível.\r\n\r\n5. Busque conhecimento: Leia livros, artigos e blogs sobre finanças pessoais. Participe de cursos e workshops. Quanto mais você aprender, mais fácil será tomar decisões financeiras inteligentes."
     ],
     "imagem": "/images/educacao-financeira.png"
   },
@@ -57,5 +57,22 @@
       "Se você está começando a investir ou busca um investimento seguro e conservador, os títulos públicos podem ser uma boa opção. Eles também podem ser uma boa forma de diversificar sua carteira de investimentos."
     ],
     "titulo": "Títulos Públicos: Vale a Pena Investir?"
+  },
+  {
+    "id": "a0711d34-bd5a-4983-a662-69cb20edd648",
+    "titulo": "teste",
+    "sumario": "teste",
+    "assunto": "teste",
+    "slug": "novo-artigo",
+    "data": "2025-02-13T16:25:22.518Z",
+    "index": 4,
+    "autor": {
+      "nome": "null",
+      "avatar": "null"
+    },
+    "texto": [
+      "testeteste"
+    ],
+    "imagem": "/images/eduardo-soares-LR0kDki_tPo-unsplash-blur.jpg"
   }
 ]
