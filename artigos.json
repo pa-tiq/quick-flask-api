@@ -1,0 +1,66 @@
+[
+  {
+    "assunto": "Investimentos",
+    "autor": {
+      "avatar": "/assets/logo-emblem.png",
+      "nome": "João Silva"
+    },
+    "data": "2025-02-01T14:30:00",
+    "id": "2705257c-4724-47ff-989f-21fa5072b978",
+    "imagem": "/images/aposentadoria.png",
+    "index": 2,
+    "slug": "investindo-no-futuro",
+    "sumario": "Descubra estratégias eficazes para garantir um futuro financeiro seguro através de investimentos inteligentes.",
+    "texto": [
+      "Planejar a aposentadoria pode parecer distante, mas é uma das decisões financeiras mais importantes que você pode tomar. Começar cedo e investir de forma inteligente pode garantir uma aposentadoria tranquila e sem preocupações.",
+      "Existem diversas opções de investimento para a aposentadoria, como previdência privada, Tesouro Direto, fundos de investimento e ações. É importante analisar seu perfil de risco, seus objetivos e o tempo que você tem para se aposentar antes de escolher os melhores investimentos para você.",
+      "Diversificar seus investimentos é fundamental para reduzir riscos e aumentar suas chances de sucesso. Não coloque todos os seus ovos na mesma cesta! Invista em diferentes classes de ativos e diversifique seus investimentos dentro de cada classe.",
+      "Além de investir, é importante controlar seus gastos e fazer um planejamento financeiro completo. Defina metas de curto, médio e longo prazo, acompanhe seus gastos e faça ajustes quando necessário. Lembre-se, o planejamento é a chave para o sucesso financeiro!",
+      "teste!"
+    ],
+    "titulo": "Investindo no Futuro: Como Planejar sua Aposentadoria"
+  },
+  {
+    "assunto": "Finanças Pessoais",
+    "autor": {
+      "avatar": "/assets/logo-emblem.png",
+      "nome": "Maria Souza"
+    },
+    "data": "2025-01-28T10:00:00",
+    "id": "56e777fe-3fdc-4777-bd5d-61f5123d43a1",
+    "imagem": "/images/educacao-financeira.png",
+    "index": 1,
+    "slug": "5-dicas-educacao-financeira",
+    "sumario": "Aprenda práticas essenciais para gerenciar seu dinheiro de forma eficiente e alcançar seus objetivos.",
+    "texto": [
+      "A educação financeira é a base para uma vida financeira saudável e próspera. Com ela, você aprende a tomar decisões inteligentes sobre seu dinheiro, como gastar, investir e economizar.",
+      "Para começar a melhorar sua educação financeira, siga estas 5 dicas:",
+      "1. Faça um orçamento: Anote todos os seus gastos e receitas para ter uma visão clara de onde seu dinheiro está indo. Isso te ajudará a identificar gastos desnecessários e áreas onde você pode economizar.\n2. Defina metas financeiras: O que você quer alcançar com seu dinheiro? Comprar uma casa? Fazer uma viagem? Pagar a faculdade dos filhos? Definir metas te dará um objetivo e te motivará a economizar e investir.",
+      "3. Aprenda sobre investimentos: Existem diversas opções de investimento, como renda fixa, renda variável, fundos de investimento e previdência privada. Estude cada uma delas e escolha as que se encaixam no seu perfil de risco e objetivos.",
+      "4. Controle suas dívidas: Dívidas podem ser um grande obstáculo para alcançar seus objetivos financeiros. Se você está endividado, faça um plano para quitar suas dívidas o mais rápido possível.",
+      "5. Busque conhecimento: Leia livros, artigos e blogs sobre finanças pessoais. Participe de cursos e workshops. Quanto mais você aprender, mais fácil será tomar decisões financeiras inteligentes."
+    ],
+    "titulo": "5 Dicas para Melhorar sua Educação Financeira"
+  },
+  {
+    "assunto": "Renda Fixa",
+    "autor": {
+      "avatar": "/assets/logo-emblem.png",
+      "nome": "Carlos Fernandes"
+    },
+    "data": "2025-01-25T16:45:00",
+    "id": "9b57e256-c414-418d-aa3a-7ac933c2a31c",
+    "imagem": "/images/titulos-publicos.png",
+    "index": 3,
+    "slug": "titulos-publicos-vale-a-pena",
+    "sumario": "Veja as vantagens e desvantagens de investir em títulos públicos e como eles podem se encaixar na sua estratégia.",
+    "texto": [
+      "Os títulos públicos são uma forma de investimento em renda fixa onde você empresta dinheiro ao governo em troca de juros. Eles são considerados um investimento seguro, pois o risco de calote é muito baixo.",
+      "Existem diversos tipos de títulos públicos, como Tesouro Direto, Tesouro Selic, Tesouro IPCA e Tesouro Prefixado. Cada um deles possui características e rentabilidades diferentes. É importante entender como cada um funciona antes de investir.",
+      "As vantagens de investir em títulos públicos incluem a segurança, a liquidez (você pode vender seus títulos antes do vencimento) e a acessibilidade (você pode investir com pouco dinheiro).",
+      "As desvantagens incluem a baixa rentabilidade em comparação com outros investimentos, como ações, e a tributação (Imposto de Renda).",
+      "Se você está começando a investir ou busca um investimento seguro e conservador, os títulos públicos podem ser uma boa opção. Eles também podem ser uma boa forma de diversificar sua carteira de investimentos."
+    ],
+    "titulo": "Títulos Públicos: Vale a Pena Investir?"
+  }
+]
