@@ -216,6 +216,10 @@ def delete_artigo():
 
         for i, artigo in enumerate(artigos):
             if artigo["id"] == artigo_id:
+                old_image_path = artigo.get("imagem", "")
+                if os.path.exists(app.static_folder + old_image_path):
+                    os.remove(app.static_folder + old_image_path)
+
                 del artigos[i]
 
                 with open("artigos.json", "w", encoding="utf-8") as f:
