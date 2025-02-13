@@ -1,16 +1,16 @@
 [
   {
-    "assunto": "Investimentos",
-    "autor": {
-      "avatar": "/assets/logo-emblem.png",
-      "nome": "João Silva"
-    },
-    "data": "2025-02-01T14:30:00",
     "id": "2705257c-4724-47ff-989f-21fa5072b978",
-    "imagem": "/images/aposentadoria.png",
-    "index": 2,
-    "slug": "investindo-no-futuro",
+    "titulo": "Investindo no Futuro: Como Planejar sua Aposentadoria",
     "sumario": "Descubra estratégias eficazes para garantir um futuro financeiro seguro através de investimentos inteligentes.",
+    "assunto": "Investimento",
+    "slug": "investindo-no-futuro",
+    "data": "2025-02-01T14:30:00",
+    "index": 2,
+    "autor": {
+      "nome": "João Silva",
+      "avatar": "/assets/logo-emblem.png"
+    },
     "texto": [
       "Planejar a aposentadoria pode parecer distante, mas é uma das decisões financeiras mais importantes que você pode tomar. Começar cedo e investir de forma inteligente pode garantir uma aposentadoria tranquila e sem preocupações.",
       "Existem diversas opções de investimento para a aposentadoria, como previdência privada, Tesouro Direto, fundos de investimento e ações. É importante analisar seu perfil de risco, seus objetivos e o tempo que você tem para se aposentar antes de escolher os melhores investimentos para você.",
@@ -18,29 +18,24 @@
       "Além de investir, é importante controlar seus gastos e fazer um planejamento financeiro completo. Defina metas de curto, médio e longo prazo, acompanhe seus gastos e faça ajustes quando necessário. Lembre-se, o planejamento é a chave para o sucesso financeiro!",
       "teste!"
     ],
-    "titulo": "Investindo no Futuro: Como Planejar sua Aposentadoria"
+    "imagem": "/images/aposentadoria.png"
   },
   {
-    "assunto": "Finanças Pessoais",
-    "autor": {
-      "avatar": "/assets/logo-emblem.png",
-      "nome": "Maria Souza"
-    },
-    "data": "2025-01-28T10:00:00",
     "id": "56e777fe-3fdc-4777-bd5d-61f5123d43a1",
-    "imagem": "/images/educacao-financeira.png",
-    "index": 1,
-    "slug": "5-dicas-educacao-financeira",
+    "titulo": "5 Dicas para Melhorar sua Educação Financeira",
     "sumario": "Aprenda práticas essenciais para gerenciar seu dinheiro de forma eficiente e alcançar seus objetivos.",
+    "assunto": "Finanças Pessoais",
+    "slug": "5-dicas-educacao-financeira",
+    "data": "2025-01-28T10:00:00",
+    "index": 1,
+    "autor": {
+      "nome": "",
+      "avatar": ""
+    },
     "texto": [
-      "A educação financeira é a base para uma vida financeira saudável e próspera. Com ela, você aprende a tomar decisões inteligentes sobre seu dinheiro, como gastar, investir e economizar.",
-      "Para começar a melhorar sua educação financeira, siga estas 5 dicas:",
-      "1. Faça um orçamento: Anote todos os seus gastos e receitas para ter uma visão clara de onde seu dinheiro está indo. Isso te ajudará a identificar gastos desnecessários e áreas onde você pode economizar.\n2. Defina metas financeiras: O que você quer alcançar com seu dinheiro? Comprar uma casa? Fazer uma viagem? Pagar a faculdade dos filhos? Definir metas te dará um objetivo e te motivará a economizar e investir.",
-      "3. Aprenda sobre investimentos: Existem diversas opções de investimento, como renda fixa, renda variável, fundos de investimento e previdência privada. Estude cada uma delas e escolha as que se encaixam no seu perfil de risco e objetivos.",
-      "4. Controle suas dívidas: Dívidas podem ser um grande obstáculo para alcançar seus objetivos financeiros. Se você está endividado, faça um plano para quitar suas dívidas o mais rápido possível.",
-      "5. Busque conhecimento: Leia livros, artigos e blogs sobre finanças pessoais. Participe de cursos e workshops. Quanto mais você aprender, mais fácil será tomar decisões financeiras inteligentes."
+      "A educação financeira é a base para uma vida financeira saudável e próspera. Com ela, você aprende a tomar decisões inteligentes sobre seu dinheiro, como gastar, investir e economizar.\n\nPara começar a melhorar sua educação financeira, siga estas 5 dicas:\n\n1. Faça um orçamento: Anote todos os seus gastos e receitas para ter uma visão clara de onde seu dinheiro está indo. Isso te ajudará a identificar gastos desnecessários e áreas onde você pode economizar.\n\n2. Defina metas financeiras: O que você quer alcançar com seu dinheiro? Comprar uma casa? Fazer uma viagem? Pagar a faculdade dos filhos? Definir metas te dará um objetivo e te motivará a economizar e investir\n\n3. Aprenda sobre investimentos: Existem diversas opções de investimento, como renda fixa, renda variável, fundos de investimento e previdência privada. Estude cada uma delas e escolha as que se encaixam no seu perfil de risco e objetivos.\n\n4. Controle suas dívidas: Dívidas podem ser um grande obstáculo para alcançar seus objetivos financeiros. Se você está endividado, faça um plano para quitar suas dívidas o mais rápido possível.\n\n5. Busque conhecimento: Leia livros, artigos e blogs sobre finanças pessoais. Participe de cursos e workshops. Quanto mais você aprender, mais fácil será tomar decisões financeiras inteligentes."
     ],
-    "titulo": "5 Dicas para Melhorar sua Educação Financeira"
+    "imagem": "/images/educacao-financeira.png"
   },
   {
     "assunto": "Renda Fixa",
