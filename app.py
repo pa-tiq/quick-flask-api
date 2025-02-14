@@ -70,9 +70,11 @@ def create_artigo():
     try:
         if request.content_type.startswith("multipart/form-data"):
             form_data = request.form
+            files = request.files  # Access uploaded files
             is_multipart = True
         elif request.is_json:
             form_data = request.get_json()
+            files = {}  # No files in JSON request
             is_multipart = False
         else:
             return make_response(jsonify({"message": "Unsupported content type"}), 400)
@@ -92,24 +94,47 @@ def create_artigo():
             "avatar": form_data.get("autor[avatar]"),
         }
 
+        new_artigo["corpo"] = []  # Initialize corpo
+
         if is_multipart:
-            new_artigo["texto"] = [
-                form_data[key]
-                for key in sorted(form_data.keys())
-                if key.startswith("texto[")
-            ]
-        else:
-            new_artigo["texto"] = form_data.get("texto", [])
+            if "imagem" in request.files:
+                image_file = request.files["imagem"]
+                if image_file.filename:
+                    filename = secure_filename(image_file.filename)
+                    image_path = os.path.join(UPLOAD_FOLDER, filename)
+                    image_file.save(image_path)
+                    new_artigo["imagem"] = f"/images/{filename}"
+            corpoindexes = []
+            for key in sorted(form_data.keys()):
+                if key.startswith("corpo["):
+                    index = key.split("[")[1].split("]")[0]  # Extract index
+                    if index in corpoindexes:
+                        continue
+                    tipo = form_data.get(f"corpo[{index}][tipo]")
+                    conteudo = form_data.get(f"corpo[{index}][conteudo]")
+                    corpo_item = {"tipo": tipo, "conteudo": conteudo}
 
-        # Handle image upload (only for multipart/form-data)
-        if is_multipart and "imagem" in request.files:
-            image_file = request.files["imagem"]
-            if image_file.filename:
-                filename = secure_filename(image_file.filename)
-                image_path = os.path.join(UPLOAD_FOLDER, filename)
-                image_file.save(image_path)
-                new_artigo["imagem"] = f"/images/{filename}"
+                    if f"corpo[{index}][imagem]" in files:  # Handle Image Upload
+                        image_file = files[f"corpo[{index}][imagem]"]
+                        if image_file.filename:
+                            filename = secure_filename(image_file.filename)
+                            image_path = os.path.join(UPLOAD_FOLDER, filename)
+                            image_file.save(image_path)
+                            corpo_item["conteudo"] = (
+                                f"/images/{filename}"  # Store relative path
+                            )
 
+                    new_artigo["corpo"].append(corpo_item)
+                    corpoindexes.append(index)
+
+        else:  # JSON
+            corpo_data = form_data.get("corpo", [])
+            for item in corpo_data:
+                corpo_item = {
+                    "tipo": item.get("tipo"),
+                    "conteudo": item.get("conteudo"),
+                }
+                new_artigo["corpo"].append(corpo_item)
         artigos.append(new_artigo)
 
         with open("artigos.json", "w", encoding="utf-8") as f:
@@ -128,9 +153,11 @@ def update_artigo():
     try:
         if request.content_type.startswith("multipart/form-data"):
             form_data = request.form
+            files = request.files
             is_multipart = True
         elif request.is_json:
             form_data = request.get_json()
+            files = {}
             is_multipart = False
         else:
             return make_response(jsonify({"message": "Unsupported content type"}), 400)
@@ -156,46 +183,76 @@ def update_artigo():
             "avatar": form_data.get("autor[avatar]", ""),
         }
 
-        # Extract texto array
-        if is_multipart:
-            updated_artigo["texto"] = [
-                form_data[key]
-                for key in sorted(form_data.keys())
-                if key.startswith("texto[")
-            ]
-        else:
-            updated_artigo["texto"] = form_data.get("texto", [])
+        updated_artigo["corpo"] = []
 
-        # Find and update the article
+        if is_multipart:
+            old_image_path = form_data.get("imagem", "")
+
+            # Handle image upload (only for multipart/form-data)
+            if "imagem" in request.files:
+                image_file = request.files["imagem"]
+                if image_file.filename:
+                    filename = secure_filename(image_file.filename)
+                    image_path = os.path.join(UPLOAD_FOLDER, filename)
+                    image_file.save(image_path)
+                    updated_artigo["imagem"] = (
+                        f"/images/{filename}"  # Relative path for frontend
+                    )
+
+                    # Delete the old image if it exists
+                    if old_image_path:
+                        if os.path.exists(app.static_folder + old_image_path):
+                            os.remove(app.static_folder + old_image_path)
+
+            else:
+                # Keep old image path if no new image was uploaded
+                updated_artigo["imagem"] = old_image_path
+            # Handle multipart form data (including image uploads)
+            corpoindexes = []
+            for key in sorted(form_data.keys()):
+                if key.startswith("corpo["):
+                    index = key.split("[")[1].split("]")[0]
+                    if index in corpoindexes:
+                        continue
+                    tipo = form_data.get(f"corpo[{index}][tipo]")
+                    conteudo = form_data.get(f"corpo[{index}][conteudo]")
+                    corpo_item = {"tipo": tipo, "conteudo": conteudo}
+                    if tipo == "imagem" and f"corpo[{index}][imagem]" in files:
+                        image_file = files[f"corpo[{index}][imagem]"]
+                        if image_file.filename:
+                            filename = secure_filename(image_file.filename)
+                            image_path = os.path.join(UPLOAD_FOLDER, filename)
+                            image_file.save(image_path)
+                            corpo_item["conteudo"] = f"/images/{filename}"
+
+                    updated_artigo["corpo"].append(corpo_item)
+                    corpoindexes.append(index)
+        else:  # JSON
+            corpo_data = form_data.get("corpo", [])
+            for item in corpo_data:
+                corpo_item = {
+                    "tipo": item.get("tipo"),
+                    "conteudo": item.get("conteudo"),
+                }
+                updated_artigo["corpo"].append(corpo_item)
+
         for i, artigo in enumerate(artigos):
             if artigo["id"] == artigo_id:
-                old_image_path = artigo.get("imagem", "")
+                # Delete old images
+                for item in artigo.get("corpo", []):
+                    if item["tipo"] == "imagem":
+                        old_image_path = item.get("conteudo", "")
+                        if (
+                            old_image_path
+                            and old_image_path.startswith("/images/")
+                            and os.path.exists(app.static_folder + old_image_path)
+                        ):
+                            os.remove(app.static_folder + old_image_path)
 
-                # Handle image upload (only for multipart/form-data)
-                if is_multipart and "imagem" in request.files:
-                    image_file = request.files["imagem"]
-                    if image_file.filename:
-                        filename = secure_filename(image_file.filename)
-                        image_path = os.path.join(UPLOAD_FOLDER, filename)
-                        image_file.save(image_path)
-                        updated_artigo["imagem"] = (
-                            f"/images/{filename}"  # Relative path for frontend
-                        )
-
-                        # Delete the old image if it exists
-                        if old_image_path:
-                            if os.path.exists(app.static_folder + old_image_path):
-                                os.remove(app.static_folder + old_image_path)
-
-                else:
-                    # Keep old image path if no new image was uploaded
-                    updated_artigo["imagem"] = old_image_path
-
-                artigos[i] = updated_artigo  # Update article
+                artigos[i] = updated_artigo
                 with open("artigos.json", "w", encoding="utf-8") as f:
                     json.dump(artigos, f, indent=2, ensure_ascii=False)
-
-                return jsonify(updated_artigo)  # Return updated article
+                return jsonify(updated_artigo)
 
         return make_response(jsonify({"message": "Article not found"}), 404)
 
@@ -216,9 +273,14 @@ def delete_artigo():
 
         for i, artigo in enumerate(artigos):
             if artigo["id"] == artigo_id:
-                old_image_path = artigo.get("imagem", "")
-                if os.path.exists(app.static_folder + old_image_path):
-                    os.remove(app.static_folder + old_image_path)
+
+                # Delete images associated with the article
+                for item in artigo.get("corpo", []):
+                    image_path = item.get("conteudo", "")
+                    if image_path.startswith("/images/") and os.path.exists(
+                        app.static_folder + image_path
+                    ):
+                        os.remove(app.static_folder + image_path)
 
                 del artigos[i]
 
@@ -230,7 +292,9 @@ def delete_artigo():
         return make_response(jsonify({"message": "Article not found"}), 404)
 
     except Exception as e:
-        return make_response(jsonify({"message": "An error occurred"}), 500)
+        return make_response(
+            jsonify({"message": "An error occurred", "error": str(e)}), 500
+        )
 
 
 if __name__ == "__main__":
