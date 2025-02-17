@@ -275,6 +275,12 @@ def delete_artigo():
             if artigo["id"] == artigo_id:
 
                 # Delete images associated with the article
+                image_path = artigo.get("imagem", "")
+                if image_path.startswith("/images/") and os.path.exists(
+                    app.static_folder + image_path
+                ):
+                    os.remove(app.static_folder + image_path)
+
                 for item in artigo.get("corpo", []):
                     image_path = item.get("conteudo", "")
                     if image_path.startswith("/images/") and os.path.exists(
