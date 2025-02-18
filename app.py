@@ -43,7 +43,7 @@ def get_artigo_by_slug(slug):
     return make_response(jsonify({"message": "Artigo not found"}), 404)
 
 
-@app.route("/api/artigos/check_slug", methods=["POST"])
+@app.route("/api/artigos/check-slug", methods=["POST"])
 def check_slug():
     try:
         data = request.get_json()
